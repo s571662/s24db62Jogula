@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title} Name Kalyan Chakravarthy Jogula
+  button(type="button",onclick="double()" class="btn btn-secondary") Iam a button
+  div(id="double") Up the amount 
+
+  script.
+    let value = 0;
+    let power = 1;
+    function double() {
+      value += 1;
+      power *= 2;
+      document.getElementById("double").innerHTML = `Two to the power ${power} is ${value}`;
+    }

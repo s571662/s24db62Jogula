@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title} 
+  p Rows: #{query.rows} and Columns: #{query.cols}
+ 
+  - let rows = Number(query.rows);
+  - let cols = Number(query.cols);
+ 
+  - if(Number.isInteger(rows) > 0  && Number.isInteger(cols)> 0)
+    p Both #{rows} and #{cols} are integers.
+ 
+    - if (rows < 3 || rows > 13)
+      p please enter the value between 3 and 13!
+ 
+    - else if (cols < 3 || cols > 13)
+      p please enter the value between 3 and 13!
+ 
+    - else
+      table#outer
+        - for(let i=0; i<rows; i++)
+          tr#middle
+            - for(let j=0; j<cols; j++)
+              td= Math.min(i + 1, j + 1)
+  - else
+    p Rows and columns must be integers.
+
+  
