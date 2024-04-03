@@ -8,7 +8,7 @@ var bird = require("./models/bird");
 require('dotenv').config();
 const connectionString = process.env.MONGO_CON
 mongoose = require('mongoose');
-console.log(connectionString);
+
 mongoose.connect(connectionString);
 
 
