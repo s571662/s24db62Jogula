@@ -3,7 +3,7 @@ extends layout
 block content
   h1= title
   p welcome to #{title}
-  - let results =  [{ bird_name: "Blue Jay", lifespan: 8 ,color: "Blue and white"},{ bird_name: "Scarlet Macaw",lifespan: 40 , color: "Brilliant red plumage"},{ bird_name: "Bald Eagle", lifespan: 20 ,color: "brown"}]
+  - let item = results
  
    div(class = "container-fluid")
      div(class="row")
@@ -11,8 +11,9 @@ block content
          div(class="col-sm-2" onclick=`buy(${index})`)
            ul
              li  #{item.bird_name}
-             li  upto #{item.lifespan} years
              li  #{item.color}
+             li  #{item.lifespan} years
+             
 
        script.
          function buy(index){
