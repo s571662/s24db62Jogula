@@ -86,7 +86,7 @@ console.error(err)
 });
 
 }
-let reseed = true;
+let reseed = false;
 if (reseed) {recreateDB();}
 
 //Get the default connection

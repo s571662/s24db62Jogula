@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    h1= title
+    if (toShow == null)
+        h2 No instance to delete
+    else
+        - let birdid = toShow._id
+        - let bird_name = toShow.bird_name
+        - let color = toShow.color
+        - let lifespan = toShow.lifespan
+        div
+            div.row
+                div(class='birdAttr mr-3') bird_id is:
+                div #{birdid}
+            div.row
+                div(class='birdAttr mr-3') bird_name is:
+                div #{bird_name}
+            div.row
+                div(class='birdAttr mr-3') color is:
+                div #{color}
+            div.row
+                div(class='birdAttr mr-3') lifespan is:
+                div #{lifespan}

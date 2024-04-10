@@ -1,0 +1,56 @@
+extends layout
+
+block content
+    h1= title
+
+    if (toShow == null)
+        h2 No instance to Update
+    else
+
+        -  let birdid = toShow._id
+        -  let bird_name = toShow.bird_name  
+        -  let color = toShow.color
+        -  let lifespan = toShow.lifespan
+
+        div.row(class='mb-2')
+            div.mr-1 ID is
+                div #{birdid}
+
+                -  let actionid = "/resource/birdnewly/" + birdid
+
+                form(id='birdForm', action=actionid, method="PUT")
+                    div.form
+                            -  group
+                                label.birdAttr(for='bird_name') bird type
+                                input#bird_name(type='text' name='bird_name', value=bird_name)
+
+                            -  group
+                                label.birdAttr(for='color') color
+                                input#color(type='text' name='color', value=color)
+
+                            -  group
+                                label.birdAttr(for='lifespan') lifespan
+                                input#lifespan(type='number' name='lifespan', value=lifespan)
+
+        input(type="submit")
+
+        script.
+         document.forms['birdForm'].addEventListener('submit', (event) => {
+                event.preventDefault();
+
+                // TODO do something here to show user that form is being submitted
+
+                fetch(event.target.action, {
+                    method: 'PUT',
+                    body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+                }).then((resp) => {
+                    return resp.text(); // or resp.text() or whatever the server sends
+                }).then((body) => {
+                    alert("Update succeeded")
+
+                    // TODO handle body
+                }).catch((error) => {
+                    // TODO handle error
+                    alert("Update failed " + error)
+                });
+            });

@@ -1,0 +1,44 @@
+extends layout
+
+block content
+
+        h1= title
+        style.
+            body{
+                background-color: lavender ;
+            }
+
+        form(id='birdForm', action="/resource/birdnew", method="POST")
+            div.form-group
+                label.birdAttr(for='bird_name') bird name
+                input#bird_name(type='text', name='bird_name')
+            div.form-group
+                label.birdAttr(for='color') color
+                input#color(type='text', name='color')
+            div.form-group
+                label.birdAttr(for='lifespan') lifespan
+                input#lifespan(type='number', name='lifespan')
+            input(type="submit" class="btn btn-success")
+
+        script.
+             document.forms['birdForm'].addEventListener('submit', (event) => {
+                    event.preventDefault();
+
+                // TODO do something here to show user that form is being submitted
+
+                fetch(event.target.action, {
+                    method: 'POST',
+                    body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+                })
+                .then((resp) => {
+                    return resp.text(); // or resp.text() or whatever the server sends
+                })
+                .then((body) => {
+                    alert("Save succeded")
+                    // TODO handle body
+                })
+                .catch((error) => {
+                    // TODO handle error
+                    alert("Save failed " + error)
+                });
+            });

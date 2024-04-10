@@ -8,11 +8,11 @@ var bird_controller = require('../controllers/bird');
 router.get('/', api_controller.api);
 /// bird ROUTES ///
 // POST request for creating a bird.
-router.post('/bird', bird_controller.bird_create_post);
+router.post('/birdnew', bird_controller.bird_create_post);
 // DELETE request to delete bird.
-router.delete('/bird/:id', bird_controller.bird_delete);
+router.delete('/birdDelete/:id', bird_controller.bird_delete);
 // PUT request to update bird.
-router.put('/bird/:id', bird_controller.bird_update_put);
+router.put('/birdnewly/:id', bird_controller.bird_update_put);
 // GET request for one bird.
 router.get('/bird/:id', bird_controller.bird_detail);
 // GET request for list of all bird items.
