@@ -5,19 +5,20 @@ block content
   p welcome to #{title}
   - let item = results
  
-   div(class = "container-fluid")
-     div(class="row")
-       each item, index in results
-         div(class="col-sm-2" onclick=`buy(${index})`)
-           ul
-             li  #{item.bird_name}
-             li  #{item.color}
-             li  #{item.lifespan} years
+  div(class = "container-fluid")
+    div(class="row m-1")
+      each item, index in results
+        - let destination = `dispatch(\"/bird/update?id=${item._id}\")`
+        div(class="row-sm-2", class="m-1" onclick=`buy(${index})`)
+          ul
+            li  #{item.bird_name}
+            li  #{item.color}
+            li  #{item.lifespan} years
+
+          button.btn( class="btn-primary ml-1", onclick= destination) Update   
              
 
-       script.
-         function buy(index){
-           alert(' purchased item will be ' + index);
-         }
-
-  
+  script.
+    function dispatch(path){
+      window.location.href=path
+    }
