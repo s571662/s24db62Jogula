@@ -20,22 +20,21 @@ block content
 
                 form(id='birdForm', action=actionid, method="PUT")
                     div.form
-                            -  group
-                                label.birdAttr(for='bird_name') bird type
-                                input#bird_name(type='text' name='bird_name', value=bird_name)
+                        -  group
+                            label.birdAttr(for='bird_name') bird type
+                            input#bird_name(type='text' name='bird_name', value=bird_name)
 
-                            -  group
-                                label.birdAttr(for='color') color
-                                input#color(type='text' name='color', value=color)
+                        -  group
+                            label.birdAttr(for='color') color
+                            input#color(type='text' name='color', value=color)
 
-                            -  group
-                                label.birdAttr(for='lifespan') lifespan
-                                input#lifespan(type='number' name='lifespan', value=lifespan)
-
-        input(type="submit")
+                        -  group
+                            label.birdAttr(for='lifespan') lifespan
+                            input#lifespan(type='number' name='lifespan', value=lifespan)
+                    input(type="submit")
 
         script.
-         document.forms['birdForm'].addEventListener('submit', (event) => {
+            document.forms['birdForm'].addEventListener('submit', (event) => {
                 event.preventDefault();
 
                 // TODO do something here to show user that form is being submitted
