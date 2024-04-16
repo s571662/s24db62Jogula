@@ -4,18 +4,24 @@ block content
   h1= title
   p welcome to #{title}
   - let item = results
- 
-  div(class = "container-fluid")
-    div(class="row m-1")
+   
+  - let create = `dispatch("/bird/create")`
+  button.btn(class="btn-primary ml-1", onclick=create) Create  
+  div.container-fluid
+    div.row.m-1
       each item, index in results
-        - let destination = `dispatch(\"/bird/update?id=${item._id}\")`
-        div(class="row-sm-2", class="m-1" onclick=`buy(${index})`)
+        - let update = `dispatch("/bird/update?id=${item._id}")`
+        - let remove = `dispatch("/bird/delete?id=${item._id}")` // Changed variable name from delete to remove
+        - let detail = `dispatch("/bird/detail?id=${item._id}")`
+        div.row-sm-2.m-1(onclick=`buy(${index})`)
           ul
-            li  #{item.bird_name}
-            li  #{item.color}
-            li  #{item.lifespan} years
+            li #{item.bird_name}
+            li #{item.color}
+            li #{item.lifespan} years
 
-          button.btn( class="btn-primary ml-1", onclick= destination) Update   
+          button.btn(class="btn-warning ml-1", onclick=update) Update  
+          button.btn(class="btn-danger ml-1", onclick=remove) Delete 
+          button.btn(class="btn-warning ml-1", onclick=detail) Detail 
              
 
   script.
